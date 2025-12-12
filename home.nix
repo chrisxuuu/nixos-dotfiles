@@ -15,6 +15,7 @@
 		enable = true;
 		shellAliases = {
 			test = "echo test-alias";
+			nixbuild = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#hyprland";
 		};
 		profileExtra = ''
 			if [ -z  "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
