@@ -22,6 +22,18 @@
 				exec Hyprland
 			fi
 		'';
+		initExtra = ''
+			export PATH="/home/c/.local/bin:$PATH"
+			function y() {
+				local tmp="$(mktemp -t 'yazi-cwd.XXXXXX')" cwd
+				yazi "$@" --cwd-file="$tmp"
+				IFS= read -r -d "" cwd < "$tmp"
+				if [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+					builtin cd -- "$cwd"
+				fi
+				rm -f -- "$tmp"
+			}
+		'';
 		sessionVariables = {
 			UV_PYTHON = "${pkgs.python312}/bin/python";
 		};

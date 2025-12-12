@@ -34,7 +34,7 @@ window#waybar {
 }
 
 #workspaces button.empty {
-    color: @white;
+    color: @brblk;
 }
 
 #workspaces button.empty.active {
@@ -60,7 +60,7 @@ button:hover {
 #network,
 #tray {
     padding: 0 8px;
-    color: @white;
+    color: @brblk;
 }
 
 #custom-sep {

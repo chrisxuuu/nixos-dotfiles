@@ -53,6 +53,7 @@
   };
 
   programs.firefox.enable = true;
+  programs.steam.enable = true;
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;  # GUI for managing keyring
 
@@ -61,7 +62,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    kitty
+    # kitty
     waybar
     git
     hyprpaper
@@ -91,6 +92,9 @@
     cmake         # Build tool (needed by some plugins)
     gnumake       # Make tool
     tree-sitter   # Parser generator (for treesitter plugins)
+    fastfetch
+    aws-workspaces
+    obs-studio
   ];
   hardware.bluetooth = {
   enable = true;
