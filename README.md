@@ -1,0 +1,1 @@
+Current NixOS + Hyprland Setup
