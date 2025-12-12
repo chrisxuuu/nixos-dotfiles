@@ -74,6 +74,17 @@
     gnome-keyring
     libsecret
     wireplumber
+    grim          # Screenshot tool
+    slurp         # Region selector
+    grimblast     # Wrapper for grim + slurp
+    wl-clipboard  # For copying to clipboard
+    yazi          # Terminal file manager
+    kdePackages.dolphin       # KDE file manager (GUI)
+    wezterm       # Terminal emulator
+    python312     # Python 3.12
+    uv            # Fast Python package installer
+    unzip
+    zip
   ];
   hardware.bluetooth = {
   enable = true;

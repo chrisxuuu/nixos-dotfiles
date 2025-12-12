@@ -8,6 +8,8 @@
 		neovim
 		R
 		vscode
+		python312
+		uv
 	];
 	programs.bash = {
 		enable = true;
@@ -15,10 +17,13 @@
 			test = "echo test-alias";
 		};
 		profileExtra = ''
-			if [ -z  "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+			if [ -z  "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
 				exec Hyprland
 			fi
 		'';
+		sessionVariables = {
+			UV_PYTHON = "${pkgs.python312}/bin/python";
+		};
 	};
 	programs.firefox = {
 		enable = true;
