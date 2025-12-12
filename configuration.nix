@@ -85,6 +85,12 @@
     uv            # Fast Python package installer
     unzip
     zip
+    gcc           # C compiler (needed for building Lua rocks)
+    luajit        # Lua JIT compiler
+    luajitPackages.luarocks-nix  # Lua package manager
+    cmake         # Build tool (needed by some plugins)
+    gnumake       # Make tool
+    tree-sitter   # Parser generator (for treesitter plugins)
   ];
   hardware.bluetooth = {
   enable = true;
