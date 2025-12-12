@@ -101,7 +101,7 @@
   "network": {
     "format-wifi": " {essid}",
     "format-ethernet": " {ipaddr}",
-    "format-disconnected": "睊",
+    "format-disconnected": "Disconnected",
     "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "on-click": "nm-connection-editor"
