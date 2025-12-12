@@ -1,0 +1,63 @@
+configuration {
+    modi: "drun,run";
+    show-icons: true;
+    display-drun: " ";
+    display-run: " ";
+    display-window: " ";
+}
+
+* {
+    background-color: transparent;
+    text-color: #ffffff;
+}
+
+window {
+    transparency: "real";
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    width: 40%;
+    location: center;
+    anchor: center;
+}
+
+mainbox {
+    padding: 20px;
+    background-color: rgba(20, 20, 20, 0.95);
+    border-radius: 10px;
+}
+
+inputbar {
+    background-color: rgba(50, 50, 50, 0.8);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    text-color: #ffffff;
+    children: [prompt, entry];
+}
+
+entry {
+    text-color: #ffffff;
+    placeholder-color: rgba(255, 255, 255, 0.5);
+}
+
+prompt {
+    text-color: #ffffff;
+}
+
+listview {
+    lines: 8;
+    scrollbar: false;
+    background-color: transparent;
+}
+
+element {
+    padding: 8px;
+    border-radius: 5px;
+    background-color: rgba(30, 30, 30, 0.7);
+    margin: 2px 0;
+}
+
+element selected {
+    background-color: rgba(100, 150, 255, 0.5);
+    text-color: #ffffff;
+}

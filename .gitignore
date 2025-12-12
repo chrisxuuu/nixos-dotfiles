@@ -1,0 +1,13 @@
+# Nix build artifacts
+result
+result-*
+
+# Lock files (optional - some people commit these)
+# flake.lock
+
+# Hardware-specific (you might want to exclude this)
+# hardware-configuration.nix
+
+# Backup files
+*.backup
+*~
