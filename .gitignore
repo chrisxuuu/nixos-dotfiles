@@ -2,10 +2,10 @@
 result
 result-*
 
-# Lock files (optional - some people commit these)
+# Lock files
 # flake.lock
 
-# Hardware-specific (you might want to exclude this)
+# Hardware-specific
 # hardware-configuration.nix
 
 # Backup files
