@@ -6,6 +6,7 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowBroken = true;  # Allow broken packages (needed for httpgd)
 
   imports =
     [ # Include the results of the hardware scan.
@@ -46,7 +47,7 @@
 
   users.users.c = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" ]; # Enable 'sudo' for the user.
       packages = with pkgs; [
         tree
       ];
@@ -96,6 +97,7 @@
     fastfetch
     aws-workspaces
     obs-studio
+    capitaine-cursors  # Capitaine Gruvbox cursor theme
   ];
   hardware.bluetooth = {
     enable = true;
@@ -138,6 +140,9 @@
 
   environment.sessionVariables = {
     GTK_THEME = "Adwaita:dark";
+    # Cursor theme for system-wide consistency
+    XCURSOR_THEME = "capitaine-cursors";
+    XCURSOR_SIZE = "24";
   };
 
   environment.loginShellInit = ''
@@ -154,21 +159,9 @@
     enableSSHSupport = true;
   };
 
-  # List services that you want to enable:
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
- # services.greetd = {
-#	enable = true;
-#	settings = {
-#		default_session = {
-#			command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
-#			user = "greeter";
-#		};
-#	};
-  #}; 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
@@ -202,4 +195,3 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-
