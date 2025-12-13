@@ -67,6 +67,7 @@
     git
     hyprpaper
     pciutils
+    usbutils
     efibootmgr
     networkmanagerapplet
     blueman
@@ -97,10 +98,29 @@
     obs-studio
   ];
   hardware.bluetooth = {
-  enable = true;
-  powerOnBoot = true;
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        # Disable the built-in adapter and use only the TP-Link
+        ControllerMode = "dual";
+        # Auto-enable power on all adapters
+        AutoEnable = true;
+      };
+    };
   };
   services.blueman.enable = true;
+
+  # Disable the built-in Realtek Bluetooth adapter
+  boot.blacklistedKernelModules = [ ];
+  # Add udev rule to prefer TP-Link adapter
+  services.udev.extraRules = ''
+    # Disable built-in Realtek Bluetooth (ID 0489:e112)
+    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="0489", ATTRS{idProduct}=="e112", ATTR{authorized}="0"
+    
+    # Enable TP-Link Bluetooth (ID 2357:0604)
+    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="2357", ATTRS{idProduct}=="0604", ATTR{authorized}="1"
+  '';
 
   # Enable sound with pipewire
   services.pulseaudio.enable = false;
@@ -160,7 +180,7 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
   hardware.enableRedistributableFirmware = true;
-  hardware.enableAllFirmware = true; 
+  hardware.enableAllFirmware = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
