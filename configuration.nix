@@ -99,6 +99,8 @@
     obs-studio
     capitaine-cursors  # Capitaine Gruvbox cursor theme
     nodejs_24 # For Nvim plugins
+    pandoc
+    texlive.combined.scheme-full
   ];
   hardware.bluetooth = {
     enable = true;

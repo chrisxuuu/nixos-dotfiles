@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, lib, ...}:
 
 let
   # Define R packages list (used for both R-with-packages and .Renviron)
@@ -17,7 +17,7 @@ let
     devtools usethis remotes roxygen2 pkgdown testthat lintr styler
     
     # R Markdown and reporting
-    rmarkdown knitr markdown r2rtf
+    rmarkdown knitr markdown r2rtf tinytex
     
     # Shiny and interactive
     shiny htmltools htmlwidgets crosstalk reactable bslib
@@ -210,9 +210,9 @@ in
 		'';
 		sessionVariables = {
 			UV_PYTHON = "${pkgs.python312}/bin/python";
-			EDITOR = "nvim";
-			VISUAL = "nvim";
-			GIT_EDITOR = "nvim";
+			EDITOR = "code";
+			VISUAL = "code";
+			GIT_EDITOR = "code";
 			# Cursor theme variables for Hyprland
 			XCURSOR_THEME = "capitaine-cursors";
 			XCURSOR_SIZE = "24";
@@ -257,7 +257,16 @@ in
 			${libPathsScript} > $out
 		'');
 	in ''
-		R_LIBS_USER="${allPaths}"
+		# User-writable library for packages that need compilation (e.g., nvimcom)
+		R_LIBS_USER="$HOME/.local/lib/R/library:${allPaths}"
+	'';
+	
+	# Create the user R library directory for packages that need compilation
+	# Nvim-R will automatically install nvimcom here when needed
+	# Use home.activation to ensure proper permissions
+	home.activation.createRLibrary = lib.hm.dag.entryAfter ["writeBoundary"] ''
+		$DRY_RUN_CMD mkdir -p $HOME/.local/lib/R/library
+		$DRY_RUN_CMD chmod 755 $HOME/.local/lib/R/library
 	'';
 	
 	
