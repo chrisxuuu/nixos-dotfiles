@@ -245,14 +245,19 @@ in
 	home.file.".local/bin/radian-wrapped".executable = true;
 	
 	# Auto-generate .Renviron with all R package library paths
-	# This makes packages available in radian
+	# This makes packages available in radian by capturing what R itself sees
 	home.file.".Renviron".text = let
-		# Map package list to library paths
-		rPackagePaths = builtins.map (pkg: "${pkg}/library") rPackagesList;
-		# Join all paths with colons
-		pathString = builtins.concatStringsSep ":" rPackagePaths;
+		# Get all library paths by actually running R and querying .libPaths()
+		# This ensures we get EVERYTHING including base packages and dependencies
+		libPathsScript = pkgs.writeShellScript "get-r-libpaths" ''
+			${R-with-packages}/bin/R --slave -e 'cat(paste(.libPaths(), collapse=":"))' 2>/dev/null
+		'';
+		# Execute the script to get the paths
+		allPaths = builtins.readFile (pkgs.runCommand "r-libpaths" {} ''
+			${libPathsScript} > $out
+		'');
 	in ''
-		R_LIBS_USER="${pathString}"
+		R_LIBS_USER="${allPaths}"
 	'';
 	
 	

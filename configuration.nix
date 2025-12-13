@@ -98,6 +98,7 @@
     aws-workspaces
     obs-studio
     capitaine-cursors  # Capitaine Gruvbox cursor theme
+    nodejs_24 # For Nvim plugins
   ];
   hardware.bluetooth = {
     enable = true;
