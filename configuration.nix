@@ -85,8 +85,6 @@
     wezterm       # Terminal emulator
     python312     # Python 3.12
     uv            # Fast Python package installer
-    unzip
-    zip
     gcc           # C compiler (needed for building Lua rocks)
     luajit        # Lua JIT compiler
     luajitPackages.luarocks-nix  # Lua package manager
@@ -100,6 +98,8 @@
     nodejs_24 # For Nvim plugins
     pandoc
     texlive.combined.scheme-full
+    p7zip
+    gzip
   ];
   hardware.bluetooth = {
     enable = true;
