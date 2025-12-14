@@ -317,4 +317,9 @@ in
 			gtk-theme = "Adwaita-dark";
 		};
 	};
+
+	# Flatpak
+  services.flatpak.packages = [
+    "com.usebottles.bottles"
+  ];
 }

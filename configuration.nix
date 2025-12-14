@@ -28,7 +28,6 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
   networking.hostName = "hyprland"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
@@ -36,7 +35,6 @@
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
-  
   services.getty.autologinUser = "c";
 
   programs.hyprland = {
@@ -55,8 +53,9 @@
 
   programs.firefox.enable = true;
   programs.steam.enable = true;
-  services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;  # GUI for managing keyring
+  services.gnome.gnome-keyring.enable = true;
+  services.flatpak.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -101,7 +100,6 @@
     nodejs_24 # For Nvim plugins
     pandoc
     texlive.combined.scheme-full
-    bottles-unwrapped
   ];
   hardware.bluetooth = {
     enable = true;
