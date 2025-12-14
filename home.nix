@@ -89,6 +89,8 @@ in
 		capitaine-cursors
 		# R console enhancer
 		radian
+		discord
+		slack
 	];
 	
 	programs.bash = {

@@ -95,12 +95,13 @@
     gnumake       # Make tool
     tree-sitter   # Parser generator (for treesitter plugins)
     fastfetch
-    aws-workspaces
+    # aws-workspaces Does not Support PCoIP.
     obs-studio
     capitaine-cursors  # Capitaine Gruvbox cursor theme
     nodejs_24 # For Nvim plugins
     pandoc
     texlive.combined.scheme-full
+    bottles-unwrapped
   ];
   hardware.bluetooth = {
     enable = true;
